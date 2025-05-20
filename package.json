@@ -1,6 +1,6 @@
 {
   "name": "@ownables/cli",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "CLI tool for creating and building Ownables",
   "main": "lib/index.js",
   "bin": {
@@ -17,7 +17,7 @@
     "cosmwasm"
   ],
   "author": "LTO Network",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/ltonetwork/ownables-cli.git"

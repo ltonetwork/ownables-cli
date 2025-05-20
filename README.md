@@ -1,70 +1,166 @@
 # Ownables CLI
 
-A command-line tool for building Ownables, making it easy to compile and package your CosmWasm smart contracts.
-
-## Installation
-
-```bash
-npm install -g ownables-cli
-```
-
-Or use it directly with npx:
-
-```bash
-npx ownables-cli
-```
+A command-line tool for creating and building Ownables - digital assets with unique visual and audio experiences.
 
 ## Prerequisites
 
-Before using the CLI, make sure you have the following installed:
+Before using the Ownables CLI, you'll need to set up your development environment:
 
-- [Rust](https://rustup.rs/)
-- [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)
-- [Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html)
+### Windows
 
-## Usage
+1. Install Rust:
 
-### Building an Ownable
+   - Visit [https://rustup.rs/](https://rustup.rs/)
+   - Download and run the installer
 
-Navigate to your Rust project directory and run:
+2. Install Visual Studio Build Tools:
+
+   - Download from [Visual Studio Downloads](https://visualstudio.microsoft.com/downloads/)
+   - Select "Desktop development with C++"
+
+3. Install wasm-bindgen:
+
+   ```bash
+   cargo install wasm-bindgen-cli
+   ```
+
+4. Add WebAssembly target:
+   ```bash
+   rustup target add wasm32-unknown-unknown
+   ```
+
+### macOS
+
+1. Install Rust:
+
+   ```bash
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   ```
+
+2. Install Xcode Command Line Tools:
+
+   ```bash
+   xcode-select --install
+   ```
+
+3. Install wasm-bindgen:
+
+   ```bash
+   cargo install wasm-bindgen-cli
+   ```
+
+4. Add WebAssembly target:
+   ```bash
+   rustup target add wasm32-unknown-unknown
+   ```
+
+### Linux
+
+1. Install Rust:
+
+   ```bash
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   ```
+
+2. Install build essentials:
+
+   ```bash
+   sudo apt-get update
+   sudo apt-get install build-essential
+   ```
+
+3. Install wasm-bindgen:
+
+   ```bash
+   cargo install wasm-bindgen-cli
+   ```
+
+4. Add WebAssembly target:
+   ```bash
+   rustup target add wasm32-unknown-unknown
+   ```
+
+## Installation
+
+Install the Ownables CLI globally:
 
 ```bash
-ownables-cli build
+npm install -g @ownables/cli
 ```
 
-This command will:
+## Quick Start
 
-1. Check for required dependencies
-2. Verify the project structure
-3. Build the WebAssembly files
-4. Generate the schema
-5. Create a package with all necessary files
+### Create a New Ownable
 
-The output will be a zip file containing:
+1. Create a new project:
 
-- Compiled WASM files
-- JavaScript bindings
-- Schema files
-- Assets
+   ```bash
+   ownables create
+   ```
+
+2. Choose your template:
+
+   - **Static Ownable**: For displaying a single image
+   - **Music Ownable**: For audio with cover art and backdrop
+
+3. Follow the prompts to:
+   - Name your ownable
+   - Add a description
+   - Set version
+   - Add authors
+   - Add keywords
+
+### Add Your Assets
+
+#### For Static Ownables:
+
+1. Add your image to `assets/images/`
+   - Supported formats: jpg, jpeg, png, webp
+   - Minimum size: 300x300 pixels
+   - Maximum size: 4096x4096 pixels
+   - Maximum file size: 50MB
+
+#### For Music Ownables:
+
+1. Add your audio file to `assets/audio/`
+
+   - Format: mp3
+   - Maximum size: 50MB
+
+2. Add your images to `assets/images/`:
+   - Cover art: Name with 'cover' or 'front' (e.g., 'cover.jpg')
+   - Backdrop: Name with 'backdrop' or 'back' (e.g., 'backdrop.jpg')
+   - Same requirements as static ownable images
+
+### Build Your Ownable
+
+1. Run the build command:
+
+   ```bash
+   ownables build
+   ```
+
+2. The CLI will:
+   - Compile your code
+   - Process your assets, schema, wasm and build
+   - Create a package (a zip file) in the `build` directory - this is your ownable!
 
 ## Project Structure
 
-Your Rust project should have the following structure:
-
 ```
 your-ownable/
-├── Cargo.toml
-├── src/
-│   └── lib.rs
 ├── assets/
-└── schema/
+│   ├── images/     # Your image files
+│   ├── audio/      # Your audio files (music ownables only)
+│   └── index.html  # Display template
+├── src/            # Rust source code
+└── Cargo.toml      # Project configuration
 ```
 
-## Error Handling
+## Need Help?
 
-The CLI will provide clear error messages if:
+If you encounter any issues:
 
-- Required dependencies are missing
-- Project structure is invalid
-- Build process fails
-- Schema generation fails
+1. Check that all prerequisites are installed
+2. Verify your assets meet the requirements
+3. Ensure you're in the correct directory when running commands
