@@ -1,0 +1,47 @@
+{
+  "name": "@ownables/cli",
+  "version": "1.0.0",
+  "description": "CLI tool for creating and building Ownables",
+  "main": "lib/index.js",
+  "bin": {
+    "ownables": "./bin/ownables-cli.js"
+  },
+  "scripts": {
+    "test": "node test/test.js",
+    "prepublishOnly": "npm test"
+  },
+  "keywords": [
+    "ownables",
+    "cli",
+    "wasm",
+    "cosmwasm"
+  ],
+  "author": "LTO Network",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ltonetwork/ownables-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ltonetwork/ownables-cli/issues"
+  },
+  "homepage": "https://github.com/ltonetwork/ownables-cli#readme",
+  "dependencies": {
+    "@iarna/toml": "^2.2.5",
+    "@ltonetwork/lto": "^0.15.17",
+    "chalk": "^4.1.2",
+    "commander": "^11.1.0",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^8.2.6",
+    "jszip": "^3.10.1",
+    "ora": "^5.4.1",
+    "sharp": "^0.34.1",
+    "shelljs": "^0.8.5"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

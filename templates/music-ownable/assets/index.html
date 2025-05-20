@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      #container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-size: cover;
+      }
+
+      #image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+        padding-top: 20px;
+        position: relative;
+        width: 280px;
+        height: 280px;
+        perspective: 1000px;
+      }
+
+      #image-container img {
+        position: absolute;
+        width: 90%;
+        height: 90%;
+        object-fit: cover;
+        backface-visibility: hidden;
+        transition: transform 0.5s ease;
+        cursor: pointer;
+        background-color: #717171;
+      }
+
+      #image-container img.flipped {
+        transform: rotateY(180deg);
+      }
+
+      #image-container img {
+        transition: transform 2s ease;
+      }
+
+      .dot {
+        height: 10px;
+        width: 10px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 0 5px;
+        cursor: pointer;
+      }
+
+      .active {
+        background-color: #717171;
+      }
+
+      #image,
+      #second-image {
+        border-radius: 30px;
+      }
+
+      #audioPlayer {
+        display: flex;
+        align-items: center;
+        width: 250px;
+        background-color: rgba(242, 242, 242, 0.9);
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+      }
+
+      #audioPlayer button {
+        margin-right: 5px;
+        background-color: transparent;
+        border: none;
+        color: grey;
+        padding: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+      }
+
+      #audioPlayer button:hover {
+        background-color: transparent;
+      }
+
+      #audioPlayer span {
+        margin: 0 10px;
+      }
+
+      #audioPlayer input[type="range"] {
+        flex-grow: 1;
+        margin: 0 10px;
+      }
+
+      #audioPlayer input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 5px;
+        height: 5px;
+        background: #000000;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+
+      #audioPlayer input[type="range"]::-moz-range-thumb {
+        width: 5px;
+        height: 5px;
+        background: #000000;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+
+      #timeDisplay {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 60px;
+      }
+
+      #timeDisplay span {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      @media (max-width: 220px) {
+        body,
+        html {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+        }
+        #container {
+          width: 100%;
+          height: 100%;
+        }
+        #image-container {
+          width: 220px;
+          height: 220px;
+          padding-top: 0;
+          padding-bottom: 0;
+          border-radius: 0px;
+        }
+        #image-container img {
+          width: 100%;
+          height: 100%;
+        }
+        .dot {
+          display: none;
+        }
+        #audioPlayer {
+          display: none;
+        }
+      }
+
+      @media (min-width: 220px) and (max-width: 450px) {
+        body,
+        html {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+        }
+        #container {
+          width: 100%;
+          height: 100%;
+        }
+        #image-container {
+          width: 320px;
+          height: 320px;
+          padding-top: 0;
+          padding-bottom: 0;
+          border-radius: 30px;
+        }
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PLACEHOLDER2_TITLE</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="image-container">
+        <img
+          id="image"
+          src="PLACEHOLDER2_COVER"
+          alt="Cover Art"
+          onclick="flipImage(1)"
+        />
+        <img
+          id="second-image"
+          src="PLACEHOLDER2_BACKGROUND"
+          alt="Backdrop"
+          class="flipped"
+          onclick="flipImage(0)"
+        />
+      </div>
+      <div>
+        <span class="dot active" onclick="flipImage(0)"></span>
+        <span class="dot" onclick="flipImage(1)"></span>
+      </div>
+      <div id="audioPlayer">
+        <audio id="myAudio" preload="metadata">
+          <source src="PLACEHOLDER2_AUDIO" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <button id="playButton">&#x25B6;</button>
+        <span id="timeDisplay">
+          <span id="currentTime">0:00</span> / <span id="totalTime">0:00</span>
+        </span>
+        <input id="progressBar" type="range" min="0" value="0" step="1" />
+      </div>
+    </div>
+    <script>
+      function flipImage(index) {
+        if (window.innerWidth > 200) {
+          var firstImage = document.getElementById("image");
+          var secondImage = document.getElementById("second-image");
+          var dots = document.getElementsByClassName("dot");
+
+          if (index === 0) {
+            firstImage.classList.remove("flipped");
+            secondImage.classList.add("flipped");
+            dots[0].classList.add("active");
+            dots[1].classList.remove("active");
+          } else if (index === 1) {
+            firstImage.classList.add("flipped");
+            secondImage.classList.remove("flipped");
+            dots[0].classList.remove("active");
+            dots[1].classList.add("active");
+          }
+        }
+      }
+
+      var audio = document.getElementById("myAudio");
+      var playButton = document.getElementById("playButton");
+      var progressBar = document.getElementById("progressBar");
+      var currentTime = document.getElementById("currentTime");
+      var totalTime = document.getElementById("totalTime");
+
+      audio.addEventListener("loadedmetadata", function () {
+        progressBar.max = audio.duration;
+        var minutes = Math.floor(audio.duration / 60);
+        var seconds = Math.floor(audio.duration % 60);
+        totalTime.textContent =
+          minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+      });
+
+      audio.addEventListener("timeupdate", function () {
+        progressBar.value = audio.currentTime;
+        var minutes = Math.floor(audio.currentTime / 60);
+        var seconds = Math.floor(audio.currentTime % 60);
+        currentTime.textContent =
+          minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+      });
+
+      progressBar.addEventListener("input", function () {
+        audio.currentTime = progressBar.value;
+      });
+
+      playButton.addEventListener("click", function () {
+        if (audio.paused) {
+          audio.play();
+          playButton.innerHTML = "&#x23F8;";
+        } else {
+          audio.pause();
+          playButton.innerHTML = "&#x25B6;";
+        }
+      });
+    </script>
+  </body>
+</html>
