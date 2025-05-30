@@ -7,7 +7,9 @@
     "ownables": "./bin/ownables-cli.js"
   },
   "scripts": {
-    "test": "node test/test.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "prepublishOnly": "npm test"
   },
   "keywords": [
@@ -43,5 +45,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-node": "^29.7.0",
+    "mock-fs": "^5.2.0",
+    "tmp": "^0.2.1"
   }
 }
