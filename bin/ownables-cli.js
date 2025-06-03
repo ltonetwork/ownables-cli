@@ -22,7 +22,11 @@ program.command("build").description("Build an Ownable project").action(build);
 program
   .command("clean")
   .description("Clean build artifacts and cache")
-  .action(clean);
+  .argument(
+    "[path]",
+    "Path to the project directory (defaults to current directory)"
+  )
+  .action((path) => clean(path));
 
 program
   .command("transfer")
