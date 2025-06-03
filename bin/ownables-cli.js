@@ -2,7 +2,7 @@
 
 const { Command } = require("commander");
 const { create } = require("../lib/commands/create");
-const { build } = require("../lib/commands/build");
+const { build, clean } = require("../lib/commands/build");
 const { transfer } = require("../lib/commands/transfer");
 
 const program = new Command();
@@ -18,6 +18,11 @@ program
   .action(create);
 
 program.command("build").description("Build an Ownable project").action(build);
+
+program
+  .command("clean")
+  .description("Clean build artifacts and cache")
+  .action(clean);
 
 program
   .command("transfer")
