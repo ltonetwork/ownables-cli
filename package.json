@@ -37,7 +37,6 @@
     "commander": "^11.1.0",
     "fs-extra": "^11.2.0",
     "inquirer": "^8.2.6",
-    "ipfs-http-client": "^60.0.1",
     "jszip": "^3.10.1",
     "ora": "^5.4.1",
     "sharp": "^0.34.1",
