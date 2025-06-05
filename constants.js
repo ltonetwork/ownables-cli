@@ -1,4 +1,4 @@
-const LTO_FEE = 0.5;
+const LTO_FEE = 0.5; //max possible fee
 const RELAY_URL = "https://relay-dev.lto.network";
 const TESTNET_EXPLORER_URL = "https://explorer.testnet.lto.network";
 const MAINNET_EXPLORER_URL = "https://explorer.lto.network";

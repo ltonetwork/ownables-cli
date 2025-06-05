@@ -36,6 +36,7 @@
     "commander": "^11.1.0",
     "fs-extra": "^11.2.0",
     "inquirer": "^8.2.6",
+    "ipfs-unixfs-importer": "^9.0.0",
     "jszip": "^3.10.1",
     "ora": "^5.4.1",
     "sharp": "^0.33.2",
