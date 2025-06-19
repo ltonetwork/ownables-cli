@@ -85,7 +85,7 @@ Before using the Ownables CLI, you'll need to set up your development environmen
 Install the Ownables CLI globally:
 
 ```bash
-npm install -g @ownables/cli
+npm install -g @ltonetwork/ownables-cli
 ```
 
 ## Quick Start
