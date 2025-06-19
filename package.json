@@ -1,5 +1,5 @@
 {
-  "name": "@ownables/cli",
+  "name": "@ltonetwork/ownables-cli",
   "version": "0.1.0",
   "description": "CLI tool for creating and building Ownables",
   "main": "lib/index.js",
